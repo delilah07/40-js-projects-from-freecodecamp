@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Color Flipper</title>
+  </head>
+  <body>
+    <header>
+      <div class="header__content">
+        <span>Color Flipper</span>
+        <nav>
+          <ul>
+            <li class="active" id="simple">Simple</li>
+            <li id="hex">HEX</li>
+            <li id="rgb">RGB</li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <div class="text__wrapper">
+        <h1>Background color is <span id="color"></span></h1>
+        <p>to change background color click button below</p>
+        <button id="btn">Click Me</button>
+      </div>
+    </main>
+
+    <script type="module" src="./js/script.js"></script>
+  </body>
+</html>
