@@ -4,3 +4,6 @@
 
 color flipper app
 https://delilah07.github.io/40-js-projects-from-freecodecamp/color-flipper/index.html
+
+counter app
+https://delilah07.github.io/40-js-projects-from-freecodecamp/counter/index.html
