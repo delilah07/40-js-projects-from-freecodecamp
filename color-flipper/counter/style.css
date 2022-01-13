@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background: rgb(181, 226, 247);
+}
+main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+.counter__wraper {
+}
+.number {
+  font-size: 4rem;
+  font-weight: bold;
+}
+.btn__wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.5rem 1rem;
+}
+.btn {
+  border: none;
+  font-size: 1rem;
+  padding: 0.5rem 0.7em;
+  font-weight: normal;
+  padding: 0.3rem 0.6rem;
+  margin-top: 0.6rem;
+  cursor: pointer;
+  border-radius: 0.6rem;
+  background-color: rgb(37, 101, 131);
+  color: #fff;
+  transition: all 0.5s ease-in-out;
+}
+.btn:hover {
+  background-color: rgb(19, 72, 97);
+}
+#decrease:hover {
+  background-color: red;
+}
+#reset:hover {
+  background-color: black;
+}
+#increase:hover {
+  background-color: green;
+}
+#save {
+  grid-column: 2/3;
+}
+
+.saved__numbers {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.delete {
+}
+.input__wrapper {
+  margin-top: 1rem;
+}
+input:focus,
+input:hover,
+input:active,
+input:focus-visible {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #fff;
+}
+input {
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #fff;
+  width: 5rem;
+  font-size: 1.5rem;
+  padding: 0 0.5rem;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+#numbers__list {
+  margin: 0 2rem 0 3rem;
+  text-align: right;
+}
+#numbers__list li {
+  font-weight: bold;
+}
