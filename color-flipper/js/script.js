@@ -44,9 +44,7 @@ const changeCss = () => {
 changeCss(colorSimpleArr);
 
 // change color on button click
-changeColorBtn.addEventListener("click", () => {
-  changeCss();
-});
+changeColorBtn.addEventListener("click", changeCss);
 
 // change format color
 colorFormatBtn.forEach((btn) => {
