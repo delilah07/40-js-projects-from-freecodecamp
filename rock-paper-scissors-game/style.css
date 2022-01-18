@@ -89,6 +89,9 @@ main {
   background-color: rgb(14, 29, 68);
   border-color: rgb(80, 122, 230);
 }
+.choises__wrapper button.hide {
+  opacity: 0.3;
+}
 .movement {
   margin-top: 1rem;
 }
