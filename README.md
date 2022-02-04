@@ -10,3 +10,6 @@
 
 3. Rock Paper Scissors game
    https://delilah07.github.io/40-js-projects-from-freecodecamp/rock-paper-scissors-game/index.html
+
+4. Simon game
+   https://delilah07.github.io/40-js-projects-from-freecodecamp/simon-game/index.html

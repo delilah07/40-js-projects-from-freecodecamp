@@ -63,8 +63,6 @@ const changeCompDivs = (win, verb, lose) => {
 };
 
 const compare = (userCh, compCh) => {
-  console.log("-----", userCh, compCh);
-  console.log("before", userScore, compScore);
   resultText.innerHTML = "";
 
   if (userCh === compCh) {
@@ -88,6 +86,7 @@ const compare = (userCh, compCh) => {
   }
   console.log("after", userScore, compScore);
 };
+
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -96,6 +95,7 @@ btns.forEach((btn) =>
   btn.addEventListener("click", () => {
     const userChoise = btn.id;
     changeUser();
+    
     sleep(1500).then(() => {
       compare(userChoise, compChoiseFunction());
 
