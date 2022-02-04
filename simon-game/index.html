@@ -9,21 +9,23 @@
   </head>
   <body>
     <div class="game">
-      <div class="inner-circle">
+      <div class="outer-circle">
         <div class="color-btn" id="green"></div>
         <div class="color-btn" id="red"></div>
         <div class="color-btn" id="yellow"></div>
         <div class="color-btn" id="blue"></div>
-        <div class="outer-circle">
-          <div class="title">Simon</div>
+        <div class="inner-circle">
+          <div class="title"><span>Simon</span></div>
           <div class="btn-container">
-            <div class="start">
+            <div class="btn-wrapper start">
               <label for="start-btn">Start</label>
               <input type="radio" name="start-btn" id="start-btn" />
+              <span class="button"></span>
             </div>
-            <div class="hard">
-              <label for="hard-btn">Hard level</label>
+            <div class="btn-wrapper hard">
+              <label for="hard-btn">Hard</label>
               <input type="radio" name="hard-btn" id="hard-btn" />
+              <span class="button"></span>
             </div>
           </div>
           <div class="score"></div>

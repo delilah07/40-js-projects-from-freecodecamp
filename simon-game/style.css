@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rowdies:wght@700&display=swap");
 body {
   margin: 0;
   padding: 0;
@@ -11,7 +12,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-.inner-circle {
+.outer-circle {
   width: 500px;
   height: 500px;
   background-color: #34495e;
@@ -56,25 +57,137 @@ body {
   box-shadow: 0px -8px 10px 0px rgba(0, 0, 0, 0.4),
     inset 0px 4px 4px 4px #113247, inset 0px -6px 4px 4px #2b76a8;
 }
-.outer-circle {
+.inner-circle {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 300px;
   height: 300px;
-  background-color: #34495e;
+  background: linear-gradient(#17202a, #17202a 35%, #34495e 35%, #34495e);
   border-radius: 50%;
-  box-shadow: inset 0px 0px 20px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px -8px 10px 0px rgba(0, 0, 0, 0.4),
+    inset 0px 5px 3px 3px #304050,
+    inset 0px -4px 3px 3px rgba(90, 116, 143, 0.8);
   border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .title {
+  font-family: "Rowdies", cursive;
+  line-height: 120px;
+  font-size: 55px;
+  text-transform: uppercase;
+  perspective: 55px;
+  text-align: center;
+  color: #34495e;
+  -webkit-text-stroke: 2px rgba(90, 116, 143, 0.8);
+}
+.title span {
+  transform: rotateX(25deg) rotateY(0deg);
+  transform-style: preserve-3d;
+  display: block;
 }
 .btn-container {
+  display: flex;
 }
+.btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+input {
+  height: 0;
+  overflow: 0;
+}
+.btn-wrapper label {
+  text-align: center;
+  font-family: "Rowdies", cursive;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
 .start {
 }
 .hard {
 }
 .score {
+  font-family: "Rajdhani", sans-serif;
+}
+.button {
+  background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
+  background-image: linear-gradient(top, #f4f1ee, #fff);
+  border-radius: 50%;
+  box-shadow: 0px -8px 10px 0px rgba(0, 0, 0, 0.3), inset 0px -4px 1px 1px white,
+    inset 0px 3px 1px 1px rgba(204, 198, 197, 0.5);
+  float: left;
+  height: 40px;
+  position: relative;
+  width: 40px;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+}
+
+.button:after {
+  color: #e9e6e4;
+  content: "";
+  display: block;
+  font-size: 30px;
+  height: 30px;
+  text-decoration: none;
+  text-shadow: 0px -1px 1px #bdb5b4, 1px 1px 1px white;
+  position: absolute;
+  width: 30px;
+}
+
+.start .button:after {
+  content: "✔";
+  left: 23px;
+  top: 16px;
+}
+
+.cross:after {
+  content: "✖";
+  left: 24px;
+  top: 15px;
+}
+
+.button:hover {
+  background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
+  background-image: linear-gradient(top, #fff, #f4f1ee);
+  color: #0088cc;
+}
+
+.heart:hover:after {
+  color: #f94e66;
+  text-shadow: 0px 0px 6px #f94e66;
+}
+
+.flower:hover:after {
+  color: #f99e4e;
+  text-shadow: 0px 0px 6px #f99e4e;
+}
+
+.tick:hover:after {
+  color: #83d244;
+  text-shadow: 0px 0px 6px #83d244;
+}
+
+.cross:hover:after {
+  color: #eb2f2f;
+  text-shadow: 0px 0px 6px #eb2f2f;
+}
+
+.button:active {
+  background-image: -webkit-linear-gradient(top, #efedec, #f7f4f4);
+  background-image: linear-gradient(top, #efedec, #f7f4f4);
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.4),
+    inset 0px -3px 1px 1px rgba(204, 198, 197, 0.5);
+}
+
+.button:active:after {
+  color: #dbd2d2;
+  text-shadow: 0px -1px 1px #bdb5b4, 0px 1px 1px white;
 }
