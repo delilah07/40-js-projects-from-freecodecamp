@@ -7,7 +7,7 @@ body {
   background-color: #17202a;
 }
 .game {
-  width: 100vvw;
+  width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -139,10 +139,6 @@ input {
   align-items: center;
 }
 
-.start {
-}
-.hard {
-}
 .score {
   font-family: "Rajdhani", sans-serif;
 }
@@ -160,6 +156,8 @@ input {
   -webkit-transition: all 0.1s linear;
   transition: all 0.1s linear;
   border: 1px solid black;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
 }
 
 .button:after {
@@ -217,4 +215,17 @@ input:checked ~ .button {
 .score.active {
   color: #2492db;
   text-shadow: 0px 0px 10px #2492db;
+}
+.score.active.win {
+  animation: color 0.5s infinite;
+}
+@keyframes color {
+  0% {
+    color: #2492db;
+    text-shadow: 0px 0px 10px #2492db;
+  }
+  100% {
+    color: #f02944;
+    text-shadow: 0px 0px 10px #f02944;
+  }
 }
