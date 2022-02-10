@@ -123,6 +123,7 @@ startGame.addEventListener("click", () => {
   });
 
   hardGame.addEventListener("click", () => {
+    scoreLabel.classList.remove("win");
     !inputHard.checked ? (gameType = "hard") : (gameType = "simple");
     console.log(gameType);
     initPar();
