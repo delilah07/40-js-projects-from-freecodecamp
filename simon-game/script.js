@@ -8,9 +8,10 @@ const inputHard = document.querySelector("#hard-btn");
 const colorBtn = document.querySelectorAll(".outer-circle .color-btn");
 const scoreLabel = document.querySelector(".score");
 
-const maxScore = 5;
+const maxScore = 3;
 
 const colors = ["green", "red", "yellow", "blue"];
+let userOrder = false;
 let game = false;
 let score = 0;
 let stepArr = [];
@@ -25,6 +26,7 @@ const sound = {
 inputHard.disabled = true;
 
 const initPar = () => {
+  userOrder = false;
   score = 0;
   stepArr = [];
   userArr = [];
@@ -34,7 +36,6 @@ const initPar = () => {
 const addRandomColor = () => {
   const randomNum = Math.trunc(Math.random() * colors.length);
   stepArr.push(colors[randomNum]);
-  console.log(stepArr);
 };
 
 const oneMove = (move) => {
@@ -57,12 +58,10 @@ const checkArrays = (arr1, arr2) => {
   if (arr1.length === arr2.length) {
     if (arr1.every((el, i) => el === arr2[i])) {
       score++;
-      console.log(score);
-      console.log(gameType);
     } else {
       gameType === "simple" ? score-- : (score = 0);
     }
-    scoreLabel.innerHTML = score < 10 ? `0${score}` : score;
+    scoreLabel.innerHTML = score < 10 && score >= 0 ? `0${score}` : score;
     userArr = [];
     if (score < maxScore) level();
     else {
@@ -75,6 +74,7 @@ const userMoves = (arr) => {
     btn.addEventListener("click", () => {
       oneMove(btn.id);
       arr.push(btn.id);
+      console.log(userArr);
       checkArrays(stepArr, userArr);
     })
   );
@@ -82,22 +82,25 @@ const userMoves = (arr) => {
 
 const level = () => {
   addRandomColor();
-
   showMoves(stepArr);
-
-  userMoves(userArr);
+  console.log(stepArr);
+  userOrder = !userOrder;
+  if (userOrder) userMoves(userArr);
+  userOrder = !userOrder;
 };
 
 const initGame = () => {
+  inputHard.disabled = false;
   scoreLabel.classList.add("active");
   level();
 };
-const init = () => setTimeout(initGame(), 1000);
 
-const stopGame = () => {
-  scoreLabel.classList.remove("active");
-  clearTimeout(init);
-};
+// const stopGame = () => {
+//   scoreLabel.classList.remove("active");
+//   initGame();
+//   initPar();
+//   scoreLabel.innerHTML = score;
+// };
 const toggleClass = (div, divClass) => {
   console.log(this);
   div.classList.add(divClass);
@@ -108,12 +111,12 @@ const toggleClass = (div, divClass) => {
 
 startGame.addEventListener("click", () => {
   game = !game;
-  console.log(game);
+  console.log("game:" + game);
 
-  game ? init() : stopGame();
-  inputHard.disabled = !inputHard.disabled;
+  game ? initGame() : window.location.reload(true);
 
   resetGame.addEventListener("click", function () {
+    scoreLabel.classList.remove("win");
     initPar();
     toggleClass(resetGame, "active");
     level();
