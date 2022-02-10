@@ -184,6 +184,10 @@ input {
   content: "☀";
 }
 
+.reset .button:after {
+  content: "➦";
+}
+
 input:checked ~ .button {
   background-image: -webkit-linear-gradient(top, #253141, #425874);
   background-image: linear-gradient(top, #253141, #425874);
@@ -200,6 +204,11 @@ input:checked ~ .button {
 .hard input:checked ~ .button:after {
   color: #65a133;
   text-shadow: 0px 0px 10px #65a133;
+}
+
+.reset .button.active:after {
+  color: #a19033;
+  text-shadow: 0px 0px 10px #d4bf43;
 }
 
 .score {

@@ -2,12 +2,16 @@
 
 const startGame = document.querySelector(".start .button");
 const hardGame = document.querySelector(".hard .button");
+const resetGame = document.querySelector(".reset .button");
+const inputStart = document.querySelector("#start-btn");
+const inputHard = document.querySelector("#hard-btn");
 const colorBtn = document.querySelectorAll(".outer-circle .color-btn");
 const scoreLabel = document.querySelector(".score");
 
 const maxScore = 5;
 
 const colors = ["green", "red", "yellow", "blue"];
+let game = false;
 let score = 0;
 let stepArr = [];
 let userArr = [];
@@ -17,6 +21,14 @@ const sound = {
   red: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
   yellow: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
   green: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"),
+};
+inputHard.disabled = true;
+
+const initPar = () => {
+  score = 0;
+  stepArr = [];
+  userArr = [];
+  scoreLabel.innerHTML = score < 10 ? `0${score}` : score;
 };
 
 const addRandomColor = () => {
@@ -46,12 +58,16 @@ const checkArrays = (arr1, arr2) => {
     if (arr1.every((el, i) => el === arr2[i])) {
       score++;
       console.log(score);
+      console.log(gameType);
     } else {
       gameType === "simple" ? score-- : (score = 0);
     }
     scoreLabel.innerHTML = score < 10 ? `0${score}` : score;
     userArr = [];
-    score < maxScore ? level() : scoreLabel.classList.add("win");
+    if (score < maxScore) level();
+    else {
+      scoreLabel.classList.add("win");
+    }
   }
 };
 const userMoves = (arr) => {
@@ -66,7 +82,9 @@ const userMoves = (arr) => {
 
 const level = () => {
   addRandomColor();
+
   showMoves(stepArr);
+
   userMoves(userArr);
 };
 
@@ -74,17 +92,37 @@ const initGame = () => {
   scoreLabel.classList.add("active");
   level();
 };
+const init = () => setTimeout(initGame(), 1000);
 
 const stopGame = () => {
   scoreLabel.classList.remove("active");
-  score = 0;
-  stepArr = [];
-  userArr = [];
-  gameType = "simple";
-  //   button.disabled = false;
+  clearTimeout(init);
+};
+const toggleClass = (div, divClass) => {
+  console.log(this);
+  div.classList.add(divClass);
+  setTimeout(() => {
+    div.classList.remove(divClass);
+  }, 1000);
 };
 
 startGame.addEventListener("click", () => {
-  const inputStart = document.querySelector("#start-btn");
-  !inputStart.checked ? initGame() : stopGame();
+  game = !game;
+  console.log(game);
+
+  game ? init() : stopGame();
+  inputHard.disabled = !inputHard.disabled;
+
+  resetGame.addEventListener("click", function () {
+    initPar();
+    toggleClass(resetGame, "active");
+    level();
+  });
+
+  hardGame.addEventListener("click", () => {
+    !inputHard.checked ? (gameType = "hard") : (gameType = "simple");
+    console.log(gameType);
+    initPar();
+    level();
+  });
 });
