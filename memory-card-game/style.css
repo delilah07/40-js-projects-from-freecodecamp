@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poor Story", cursive;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #edd834;
+  min-height: 100vh;
+}
+.game {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 1em;
+}
+.game__btn {
+  padding: 1em;
+  border-radius: 1em;
+  background-color: #f24d16;
+  color: #fff;
+  font-family: inherit;
+  border: none;
+  -webkit-box-shadow: 0px 0px 5px 0px #7d1424;
+  -moz-box-shadow: 0px 0px 5px 0px #7d1424;
+  box-shadow: 0px 0px 5px 0px #7d1424;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+  font-size: 1em;
+  position: relative;
+  transform: translateX(0);
+  transition: all 0.5s ease-in-out;
+}
+.game__btn:hover {
+  -webkit-box-shadow: 0px 0px 10px 0px #7d1424;
+  -moz-box-shadow: 0px 0px 10px 0px #7d1424;
+  box-shadow: 0px 0px 10px 0px #7d1424;
+}
+.game__wrapper {
+  border-radius: 1em;
+  padding: 1em;
+  -webkit-box-shadow: 0px 0px 15px 0px #7d1424;
+  -moz-box-shadow: 0px 0px 15px 0px #7d1424;
+  box-shadow: 0px 0px 15px 0px #7d1424;
+  background-color: #ffff53;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1em;
+  overflow: hidden;
+}
+.hidden {
+  display: none;
+}
+.next__btn.hidden {
+  transform: translateX(-200px);
+}
+.game__main {
+  display: grid;
+  gap: 0.5em;
+  grid-template-columns: repeat(4, 100px);
+}
+.card {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100px;
+}
+.card > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.5em;
+  transition: transform 0.5s ease-in-out;
+  backface-visibility: hidden;
+  border: 2px solid #7d1424;
+  border-radius: 1rem;
+}
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.card__face {
+  background-color: #fff;
+  transform: rotateY(180deg);
+}
+.card__back {
+  background-color: #7d1424;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5em;
+  cursor: pointer;
+}
+.card.flipped .card__back {
+  transform: rotateY(180deg);
+}
+.card.flipped .card__face {
+  transform: rotateY(0deg);
+}

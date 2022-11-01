@@ -5,20 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory Card Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="game">
       <div class="game__start">
-        <button class="game__btn start__btn"></button>
+        <button class="game__btn start__btn">START GAME</button>
       </div>
-      <div class="game__wrapper">
+      <div class="game__wrapper hidden">
         <header class="game__header">
-          <p class="game__level">Level: <span></span></p>
-          <p class="game__timer">Timer: <span></span></p>
-          <p class="game__timer">Moves: <span></span></p>
+          <p class="game__level">Level: <span>01 / 01</span></p>
+          <p class="game__timer">Timer: <span>00:00:00</span></p>
+          <p class="game__timer">Moves: <span>12</span></p>
         </header>
         <main class="game__main"></main>
+        <footer class="game__footer">
+          <button class="game__btn next__btn hidden">NEXT LEVEL</button>
+        </footer>
       </div>
     </div>
 
