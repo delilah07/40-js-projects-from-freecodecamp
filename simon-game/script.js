@@ -74,7 +74,7 @@ const userMoves = (arr) => {
     btn.addEventListener("click", () => {
       oneMove(btn.id);
       arr.push(btn.id);
-      console.log(userArr);
+
       checkArrays(stepArr, userArr);
     })
   );
@@ -83,10 +83,11 @@ const userMoves = (arr) => {
 const level = () => {
   addRandomColor();
   showMoves(stepArr);
-  console.log(stepArr);
-  userOrder = !userOrder;
-  if (userOrder) userMoves(userArr);
-  userOrder = !userOrder;
+
+  userOrder = true;
+  if (userOrder) userMoves(userArr)
+  userOrder = false;
+
 };
 
 const initGame = () => {
@@ -95,14 +96,7 @@ const initGame = () => {
   level();
 };
 
-// const stopGame = () => {
-//   scoreLabel.classList.remove("active");
-//   initGame();
-//   initPar();
-//   scoreLabel.innerHTML = score;
-// };
 const toggleClass = (div, divClass) => {
-  console.log(this);
   div.classList.add(divClass);
   setTimeout(() => {
     div.classList.remove(divClass);
@@ -111,7 +105,6 @@ const toggleClass = (div, divClass) => {
 
 startGame.addEventListener("click", () => {
   game = !game;
-  console.log("game:" + game);
 
   game ? initGame() : window.location.reload(true);
 
@@ -125,7 +118,6 @@ startGame.addEventListener("click", () => {
   hardGame.addEventListener("click", () => {
     scoreLabel.classList.remove("win");
     !inputHard.checked ? (gameType = "hard") : (gameType = "simple");
-    console.log(gameType);
     initPar();
     level();
   });
