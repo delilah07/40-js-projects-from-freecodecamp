@@ -3,6 +3,7 @@ const gameBoard = document.querySelector(".game__main");
 const levelContent = document.querySelector(".game__level span");
 const timerContent = document.querySelector(".game__timer span");
 const movesContent = document.querySelector(".game__moves span");
+const nextLevelBtn = document.querySelector(".next__btn");
 let firstCard = false;
 let secondCard = false;
 let pairs = 0;
@@ -18,6 +19,7 @@ export class Game {
   #createCards = 0;
   init() {
     gameBoard.innerHTML = "";
+    nextLevelBtn.classList.add("hidden");
     console.log(this.level);
     levelContent.innerHTML = `${this.level} / ${cards.length / 2}`;
     this.createCards(this.level);
@@ -29,7 +31,11 @@ export class Game {
     cardArr = cardArr.sort(() => Math.random() - 0.5);
     this.cardHtml(cardArr);
     cardArrLength = cardArr.length;
-    return this.cardArrLength;
+    cardArrLength <= 16
+      ? (gameBoard.style.gridTemplateColumns = "repeat(4, 100px)")
+      : cardArrLength <= 24
+      ? (gameBoard.style.gridTemplateColumns = "repeat(6, 100px)")
+      : (gameBoard.style.gridTemplateColumns = "repeat(8, 100px)");
   }
 
   cardHtml(arr) {
@@ -60,18 +66,19 @@ export class Game {
           firstCard.classList.add("matched");
           secondCard.classList.add("matched");
           pairs++;
-          console.log(pairs, cardArrLength);
           firstCard = secondCard = false;
 
           if (pairs === cardArrLength / 2) {
-            console.log("ýou win");
+            nextLevelBtn.classList.remove("hidden");
+            pairs = 0;
+            cardArrLength = 0;
           }
         } else {
           let delay = setTimeout(() => {
             firstCard.classList.remove("flipped");
             secondCard.classList.remove("flipped");
             firstCard = false;
-          }, 900);
+          }, 500);
         }
       }
     }

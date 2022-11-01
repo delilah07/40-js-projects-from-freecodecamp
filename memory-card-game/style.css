@@ -107,3 +107,6 @@ body {
 .card.flipped .card__face {
   transform: rotateY(0deg);
 }
+.game__footer {
+  height: 52px;
+}
