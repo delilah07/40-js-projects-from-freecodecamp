@@ -1,8 +1,6 @@
 import { cards } from "./cards.js";
 const gameBoard = document.querySelector(".game__main");
 const levelContent = document.querySelector(".game__level span");
-const timerContent = document.querySelector(".game__timer span");
-const movesContent = document.querySelector(".game__moves span");
 const nextLevelBtn = document.querySelector(".next__btn");
 let firstCard = false;
 let secondCard = false;
@@ -15,7 +13,7 @@ export class Game {
     this.level = level;
     this.cardArrLength = 0;
   }
-  #createCards = 0;
+
   init() {
     gameBoard.innerHTML = "";
     nextLevelBtn.classList.add("hidden");

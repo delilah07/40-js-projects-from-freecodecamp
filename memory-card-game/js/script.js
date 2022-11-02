@@ -22,6 +22,7 @@ const initLevel = (level) => {
     gameEndWrapper.classList.remove("hidden");
     gameWrapper.classList.add("hidden");
   }
+  console.log();
 };
 
 startBtn.addEventListener("click", () => {
