@@ -6,10 +6,9 @@ const movesContent = document.querySelector(".game__moves span");
 const nextLevelBtn = document.querySelector(".next__btn");
 let firstCard = false;
 let secondCard = false;
+let isBoardLock = false;
 let pairs = 0;
 let cardArrLength = 0;
-
-console.log(cards);
 
 export class Game {
   constructor(level) {
@@ -20,7 +19,6 @@ export class Game {
   init() {
     gameBoard.innerHTML = "";
     nextLevelBtn.classList.add("hidden");
-    console.log(this.level);
     levelContent.innerHTML = `${this.level} / ${cards.length / 2}`;
     this.createCards(this.level);
   }
@@ -31,15 +29,35 @@ export class Game {
     cardArr = cardArr.sort(() => Math.random() - 0.5);
     this.cardHtml(cardArr);
     cardArrLength = cardArr.length;
-    cardArrLength <= 16
-      ? (gameBoard.style.gridTemplateColumns = "repeat(4, 100px)")
-      : cardArrLength <= 24
-      ? (gameBoard.style.gridTemplateColumns = "repeat(6, 100px)")
-      : (gameBoard.style.gridTemplateColumns = "repeat(8, 100px)");
+    this.gameBoardCSS(cardArrLength);
+  }
+  gameBoardCSS(el) {
+    switch (el) {
+      case 4:
+      case 8:
+      case 12:
+      case 16:
+        gameBoard.style.gridTemplateColumns = "repeat(4, 100px)";
+        break;
+      case 20:
+        gameBoard.style.gridTemplateColumns = "repeat(5, 100px)";
+        break;
+      case 24:
+        gameBoard.style.gridTemplateColumns = "repeat(6, 100px)";
+        break;
+      case 28:
+        gameBoard.style.gridTemplateColumns = "repeat(7, 100px)";
+        break;
+      case 32:
+        gameBoard.style.gridTemplateColumns = "repeat(8, 100px)";
+        break;
+      default:
+        gameBoard.style.gridTemplateColumns = "repeat(10, 60px)";
+        break;
+    }
   }
 
   cardHtml(arr) {
-    console.log(arr);
     arr.forEach((el) =>
       gameBoard.insertAdjacentHTML(
         "beforeend",
@@ -50,15 +68,18 @@ export class Game {
       )
     );
   }
-  addHandlerCardClick(el, arr) {
+  addHandlerCardClick(el) {
     let card = el.target.closest(".card");
 
+    if (isBoardLock) return;
     if (!card.classList.contains("matched")) {
       card.classList.add("flipped");
+      if (card === firstCard) return;
       if (!firstCard) {
         firstCard = card;
       } else {
         secondCard = card;
+        isBoardLock = true;
         if (
           firstCard.querySelector("img").getAttribute("src") ===
           secondCard.querySelector("img").getAttribute("src")
@@ -73,11 +94,14 @@ export class Game {
             pairs = 0;
             cardArrLength = 0;
           }
+          isBoardLock = false;
         } else {
           let delay = setTimeout(() => {
             firstCard.classList.remove("flipped");
             secondCard.classList.remove("flipped");
             firstCard = false;
+            secondCard = false;
+            isBoardLock = false;
           }, 500);
         }
       }

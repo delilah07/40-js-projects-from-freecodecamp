@@ -54,16 +54,14 @@ body {
   gap: 1em;
   overflow: hidden;
 }
-.hidden {
-  display: none;
-}
+
 .next__btn.hidden {
   transform: translateX(-200px);
 }
 .game__main {
   display: grid;
   gap: 0.5em;
-  grid-template-columns: repeat(4, 100px);
+  /* grid-template-columns: repeat(4, 100px); */
 }
 .card {
   position: relative;
@@ -109,4 +107,14 @@ body {
 }
 .game__footer {
   height: 52px;
+}
+.game__end {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1em;
+}
+.hidden {
+  display: none;
 }
