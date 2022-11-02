@@ -15,4 +15,7 @@
    https://delilah07.github.io/40-js-projects-from-freecodecamp/simon-game/
 
 5. Memory card game
-    https://delilah07.github.io/40-js-projects-from-freecodecamp/memory-card-game/
+   https://delilah07.github.io/40-js-projects-from-freecodecamp/memory-card-game/
+
+6. Brick-breaker game
+   https://delilah07.github.io/40-js-projects-from-freecodecamp/brick-breaker-game/
